@@ -33,6 +33,6 @@ size_t binary_tree_leaves(const binary_tree_t *tree)
 		return (is_leaf);
 	is_leaf += binary_tree_leaves(tree->left);
 	is_leaf += binary_tree_leaves(tree->right);
-	is_leaf += (size_t) binary_tree_is_leaf(tree);
+	is_leaf += (size_t) binary_tree_is_leaf2(tree);
 	return (is_leaf);
 }
