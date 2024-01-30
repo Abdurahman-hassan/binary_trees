@@ -3,7 +3,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_preorder - print the tree elements in the order (root, left, right)
+ * binary_tree_preorder - print tree elements in the order (root, left, right)
  *
  * @tree: Pointer to the root of the tree or subtree
  * @func: Pointer to a function
