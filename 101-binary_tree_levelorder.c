@@ -3,7 +3,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_levelorder - Goes through a binary tree using level-order traversal
+ * binary_tree_levelorder - Goes through a binary tree using level by level
  *
  * @tree: Pointer to the root in tree or subtree
  * @func: Pointer to a function usually just print value

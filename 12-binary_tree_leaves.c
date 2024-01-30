@@ -3,6 +3,21 @@
 #include "binary_trees.h"
 
 /**
+ * binary_tree_is_leaf2 - Checking whether the node is leaf or not
+ *
+ * @node: Pointer to node
+ *
+ * Return: 1 if node is a leaf, otherwise 0
+*/
+
+int binary_tree_is_leaf2(const binary_tree_t *node)
+{
+	if (node == NULL || node->left || node->right)
+		return (0);
+	return (1);
+}
+
+/**
  * binary_tree_leaves - Counts the leaves in a binary tree
  *
  * @tree: Pointer to the root in tree or subtree
