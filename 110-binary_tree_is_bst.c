@@ -22,9 +22,9 @@ size_t binary_tree_size2(const binary_tree_t *tree)
 		return (1);
 
 	/* traverse left subtree */
-	left_size = binary_tree_size(tree->left);
+	left_size = binary_tree_size2(tree->left);
 	/* traverse right subtree */
-	right_size = binary_tree_size(tree->right);
+	right_size = binary_tree_size2(tree->right);
 
 	/* return the sum of the sizes of the subtrees */
 	return (left_size + right_size + 1);
