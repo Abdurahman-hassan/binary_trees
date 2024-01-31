@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_size - measure the size of a binary tree
+ * binary_tree_size2 - measure the size of a binary tree
  * @tree: Pointer to the root of the tree or subtree
  * Return: Size of the tree or subtree
  */
@@ -29,7 +29,7 @@ size_t binary_tree_size2(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_inorder - goes through a binary tree using in-order traversal
+ * binary_tree_inorder2 - goes through a binary tree using in-order traversal
  *
  * @tree: pointer to the root node of the tree to traverse
  * @arr: pointer to a function to call for each node
@@ -71,7 +71,7 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 		return (0);
 	binary_tree_inorder2(tree, arr, &i);
 	for (i = 1; i < tree_sz; ++i)
-		if (arr[i] <= arr[i-1])
+		if (arr[i] <= arr[i - 1])
 		{
 			free(arr);
 			return (0);
