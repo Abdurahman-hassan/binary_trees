@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "binary_trees.h"
 
 /**
@@ -10,12 +8,16 @@
  *
  * Return: Nothing
 */
-
 void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
 {
+	/* if tree or func is NULL, do nothing */
 	if (tree == NULL || func == NULL)
 		return;
+
+	/* traverse left subtree */
 	binary_tree_postorder(tree->left, func);
+	/* traverse right subtree */
 	binary_tree_postorder(tree->right, func);
+	/* call func on current node */
 	func(tree->n);
 }
