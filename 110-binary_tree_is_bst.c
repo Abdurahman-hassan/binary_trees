@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "binary_trees.h"
 
 /**
@@ -71,13 +69,13 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	arr = malloc(sizeof(int) * tree_sz);
 	if (arr == NULL)
 		return (0);
-    binary_tree_inorder2(tree, arr, &i);
-    for (i = 1; i < tree_sz; ++i)
-        if (arr[i] <= arr[i-1])
-        {
-            free(arr);
-            return (0);
-        }
-    free(arr);
-    return (1);
+	binary_tree_inorder2(tree, arr, &i);
+	for (i = 1; i < tree_sz; ++i)
+		if (arr[i] <= arr[i-1])
+		{
+			free(arr);
+			return (0);
+		}
+	free(arr);
+	return (1);
 }
