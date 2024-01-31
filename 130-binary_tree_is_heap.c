@@ -64,7 +64,7 @@ int binary_tree_is_heap(const binary_tree_t *tree)
 	/* if tree is NULL, it is not complete */
 	if (!tree)
 		return (0);
-	
+
 	complete_flag = is_complete(tree, 0, binary_tree_size(tree));
 	return (complete_flag && root_is_max(tree));
 }
