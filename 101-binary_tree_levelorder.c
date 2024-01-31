@@ -58,6 +58,6 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 		++first;
 	}
 	for (; i < tree_sz; ++i)
-		func(arr[0].n);
+		func(arr[i].n);
 	free(arr);
 }
