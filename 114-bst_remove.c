@@ -31,17 +31,23 @@ void zero_child(bst_t *node, int value)
  * Return: Nothing
 */
 
-void one_child(bst_t *node, __attribute__((unused)) int value)
+void one_child(bst_t *node, int value)
 {
 	bst_t *child = NULL;
 
 	if (node->left)
-		node->n = node->left->n, child = node->left;
+		child = node->left, child->parent = node->parent;
 	else
-		node->n = node->right->n, child = node->right;
-	free(child);
-	child = NULL;
-	node->left = NULL;
+		child = node->right, child->parent = node->parent;
+	if (node->parent != NULL)
+	{
+		if (node->parent->left && node->parent->left->n == value)
+			node->parent->left = child;
+		else
+			node->parent->right = child;
+	}
+	free(node);
+	node = NULL;
 }
 
 /**
