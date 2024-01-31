@@ -8,24 +8,24 @@
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
-    int left_full = 0, right_full = 0;
+	int left_full = 0, right_full = 0;
 
-    /* If tree is NULL, return 0 */
-    if (tree == NULL)
-        return (0);
+	/* If tree is NULL, return 0 */
+	if (tree == NULL)
+		return (0);
 
-    /* If tree has no children, return 1 */
-    if (tree->left == NULL && tree->right == NULL)
-        return (1);
+	/* If tree has no children, return 1 */
+	if (tree->left == NULL && tree->right == NULL)
+		return (1);
 
-    /* Recursively check if the left and right subtrees are full */
-    left_full = binary_tree_is_full(tree->left);
-    right_full = binary_tree_is_full(tree->right);
+	/* Recursively check if the left and right subtrees are full */
+	left_full = binary_tree_is_full(tree->left);
+	right_full = binary_tree_is_full(tree->right);
 
-    /* If both subtrees are full, return 1 */
-    if (left_full == 1 && right_full == 1)
-        return (1);
+	/* If both subtrees are full, return 1 */
+	if (left_full == 1 && right_full == 1)
+		return (1);
 
-    /* Otherwise, return 0 */
-    return (0);
+	/* Otherwise, return 0 */
+	return (0);
 }
