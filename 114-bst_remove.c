@@ -28,11 +28,10 @@ void zero_child(bst_t *node, int value)
  * Return: Nothing
 */
 
-void one_child(bst_t *node, int value)
+void one_child(bst_t *node,__attribute__((unused)) int value)
 {
 	bst_t *child = NULL;
 
-	(void) value;
 	if (node->left)
 		node->n = node->left->n, child = node->left;
 	else
