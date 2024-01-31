@@ -42,6 +42,8 @@ int binary_tree_balance(const binary_tree_t *tree)
 /**
  * binary_tree_is_bst2 - Checks if a binary search tree is a valid
  * @tree: pointer to the root node of the tree or subtree
+ * @mn: minimum value current node can have
+ * @mx: maximum value current node can have
  * Return: 1 if tree is a valid BST, and 0 otherwise
  */
 int binary_tree_is_bst2(const binary_tree_t *tree, int mn, int mx)
@@ -55,7 +57,7 @@ int binary_tree_is_bst2(const binary_tree_t *tree, int mn, int mx)
 		return (0);
 	if (tree->n < mn || tree->n > mx)
 		return (0);
-	
+
 	return (binary_tree_is_bst2(tree->left, mn, tree->n - 1) &&
 	binary_tree_is_bst2(tree->right, tree->n + 1, mx));
 }
@@ -73,5 +75,6 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 		return (0);
 
 	/* if tree is complete and valid binary search tree then it's valid avl */
-	return (binary_tree_is_bst2(tree, INT_MIN, INT_MAX) && binary_tree_balance(tree));
+	return (binary_tree_is_bst2(tree, INT_MIN, INT_MAX) &&
+	binary_tree_balance(tree));
 }
