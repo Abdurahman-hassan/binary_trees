@@ -1,6 +1,32 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "binary_trees.h"
+
+/**
+ * binary_tree_size - measure the size of a binary tree
+ * @tree: Pointer to the root of the tree or subtree
+ * Return: Size of the tree or subtree
+ */
+
+size_t binary_tree_size2(const binary_tree_t *tree)
+{
+	size_t left_size = 0;
+	size_t right_size = 0;
+
+	/* if tree is NULL, return 0 */
+	if (tree == NULL)
+		return (0);
+
+	/* if tree has no children, return 1 */
+	if (tree->left == NULL && tree->right == NULL)
+		return (1);
+
+	/* traverse left subtree */
+	left_size = binary_tree_size2(tree->left);
+	/* traverse right subtree */
+	right_size = binary_tree_size2(tree->right);
+
+	/* return the sum of the sizes of the subtrees */
+	return (left_size + right_size + 1);
+}
 
 /**
  * binary_tree_inorder - goes through a binary tree using in-order traversal
@@ -35,7 +61,7 @@ void binary_tree_inorder2(const binary_tree_t *tree, int *arr, size_t *idx)
 
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	size_t tree_sz = binary_tree_size(tree), i = 0;
+	size_t tree_sz = binary_tree_size2(tree), i = 0;
 	int *arr;
 
 	if (tree == NULL)
@@ -43,13 +69,13 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	arr = malloc(sizeof(int) * tree_sz);
 	if (arr == NULL)
 		return (0);
-    binary_tree_inorder2(tree, arr, &i);
-    for (i = 1; i < tree_sz; ++i)
-        if (arr[i] <= arr[i-1])
-        {
-            free(arr);
-            return (0);
-        }
-    free(arr);
-    return (1);
+	binary_tree_inorder2(tree, arr, &i);
+	for (i = 1; i < tree_sz; ++i)
+		if (arr[i] <= arr[i-1])
+		{
+			free(arr);
+			return (0);
+		}
+	free(arr);
+	return (1);
 }
