@@ -31,7 +31,7 @@ void zero_child(bst_t *node, int value)
  * Return: Nothing
 */
 
-void one_child(bst_t *node,__attribute__((unused)) int value)
+void one_child(bst_t *node, __attribute__((unused)) int value)
 {
 	bst_t *child = NULL;
 
@@ -40,13 +40,11 @@ void one_child(bst_t *node,__attribute__((unused)) int value)
 	else
 		child = node->right;
 
-	// Update the parent's pointer to the child node
 	if (node->parent->left == node)
 		node->parent->left = child;
 	else
 		node->parent->right = child;
 
-	// Now free the node
 	free(node);
 	node = NULL;
 }
@@ -99,7 +97,7 @@ void two_child(bst_t *node, int value)
 
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *node= root;
+	bst_t *node = root;
 
 	if (root == NULL)
 		return (NULL);
