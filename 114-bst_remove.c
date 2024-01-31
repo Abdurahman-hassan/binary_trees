@@ -3,6 +3,46 @@
 #include "binary_trees.h"
 
 /**
+ * zero_child - Removes a node that has zero child
+ *
+ * @node: Pointer to the node to be removed
+ * @value: The value to remove in the tree
+ *
+ * Return: Nothing
+*/
+
+void zero_child(bst_t *node, int value)
+{
+    if (node->parent->left->n == value)
+        node->parent->left = NULL;
+    else
+        node->parent->right = NULL;
+    free(node);
+    node = NULL;
+}
+
+/**
+ * one_child - Removes a node that has one child
+ *
+ * @node: Pointer to the node to be removed
+ * @value: The value to remove in the tree
+ *
+ * Return: Nothing
+*/
+
+void one_child(bst_t *node, int value)
+{
+    bst_t *child = NULL;
+
+    if (node->left)
+        node->n = node->left->n, child = node->left;
+    else
+        node->n = node->right->n, child = node->right;
+    free(child);
+    child = NULL;
+}
+
+/**
  * find_successor - Find first in-order successor to the node to be removed
  *
  * @node: Pointer to the node to be removed
@@ -37,46 +77,6 @@ void two_child(bst_t *node, int value)
         one_child(successor, value);
     else
         zero_child(successor, value);
-}
-
-/**
- * one_child - Removes a node that has one child
- *
- * @node: Pointer to the node to be removed
- * @value: The value to remove in the tree
- *
- * Return: Nothing
-*/
-
-void one_child(bst_t *node, int value)
-{
-    bst_t *child = NULL;
-
-    if (node->left)
-        node->n = node->left->n, child = node->left;
-    else
-        node->n = node->right->n, child = node->right;
-    free(child);
-    child = NULL;
-}
-
-/**
- * zero_child - Removes a node that has zero child
- *
- * @node: Pointer to the node to be removed
- * @value: The value to remove in the tree
- *
- * Return: Nothing
-*/
-
-void zero_child(bst_t *node, int value)
-{
-    if (node->parent->left->n == value)
-        node->parent->left = NULL;
-    else
-        node->parent->right = NULL;
-    free(node);
-    node = NULL;
 }
 
 /**
