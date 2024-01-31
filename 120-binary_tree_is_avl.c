@@ -26,7 +26,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int left_height = 0, right_height = 0, diff;
+	int diff;
 
 	/* If tree is NULL, return 0 */
 	if (tree == NULL)
@@ -46,9 +46,6 @@ int binary_tree_balance(const binary_tree_t *tree)
  */
 int binary_tree_is_bst2(const binary_tree_t *tree, int mn, int mx)
 {
-	size_t i = 0;
-	int *arr;
-
 	/* if tree is NULL, return 1 */
 	if (tree == NULL)
 		return (1);
