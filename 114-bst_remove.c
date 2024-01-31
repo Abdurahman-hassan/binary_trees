@@ -11,10 +11,13 @@
 
 void zero_child(bst_t *node, int value)
 {
-	if (node->parent->left->n == value)
-		node->parent->left = NULL;
-	else
-		node->parent->right = NULL;
+	if (node->parent != NULL)
+	{
+		if (node->parent->left->n == value)
+			node->parent->left = NULL;
+		else
+			node->parent->right = NULL;
+	}
 	free(node);
 	node = NULL;
 }
