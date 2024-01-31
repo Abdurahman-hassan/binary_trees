@@ -36,17 +36,12 @@ void one_child(bst_t *node, __attribute__((unused)) int value)
 	bst_t *child = NULL;
 
 	if (node->left)
-		child = node->left;
+		node->n = node->left->n, child = node->left;
 	else
-		child = node->right;
-
-	if (node->parent->left == node)
-		node->parent->left = child;
-	else
-		node->parent->right = child;
-
-	free(node);
-	node = NULL;
+		node->n = node->right->n, child = node->right;
+	free(child);
+	child = NULL;
+	node->left = NULL;
 }
 
 /**
