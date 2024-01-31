@@ -10,10 +10,27 @@
 
 avl_t *array_to_avl(int *array, size_t size)
 {
-	bst_t *root = NULL;
-    size_t i = 0;
+	avl_t *root = NULL;
+    size_t i = 0, j = 0, last = 0;
+    int arr[size];
 
-    for (; i < size; ++i)
-        avl_insert(&root, array[i]);
+    if (array == NULL || size == 0)
+        return (NULL);
+    
+    for (i = 0; i < size; ++i)
+    {
+        int flag = 1;
+
+        for (j = 0; j < i; ++j)
+        {
+            if (arr[i] == arr[j])
+                flag = 0;
+        }
+        if (flag)
+            arr[last++] = arr[i];
+    }
+    for (i = 0; i < last; ++i)
+        if (avl_insert(&root, arr[i]) == NULL)
+            return (NULL);
     return (root);
 }
