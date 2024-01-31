@@ -32,6 +32,7 @@ void one_child(bst_t *node, int value)
 {
 	bst_t *child = NULL;
 
+	(void) value;
 	if (node->left)
 		node->n = node->left->n, child = node->left;
 	else
