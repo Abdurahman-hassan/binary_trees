@@ -35,9 +35,9 @@ Here are some functions you need to write for this project:
 
 12. `size_t binary_tree_size(const binary_tree_t *tree);` - Measures the size of a binary tree. Returns 0 if the tree is NULL.
 
+13. `size_t binary_tree_leaves(const binary_tree_t *tree);` - Counts the leaves in a binary tree. Returns 0 if the tree is NULL. A NULL pointer is not considered a leaf.
 
+14. `size_t binary_tree_nodes(const binary_tree_t *tree);` - Counts the nodes with at least 1 child in a binary tree. Returns 0 if the tree is NULL. A NULL pointer is not considered a node.
 
-12. `size_t binary_tree_depth(const binary_tree_t *tree);` - Measures the depth of a node in a binary tree. Returns 0 if the tree is NULL.
-
-13. `size_t binary_tree_size(const binary_tree_t *tree);` - Measures the size of a binary tree. Returns 0 if the tree is NULL.
+15. `int binary_tree_balance(const binary_tree_t *tree);` - Measures the balance factor of a binary tree. Returns 0 if the tree is NULL.
 
