@@ -10,9 +10,9 @@
  * Return: Pointer to the root node of the created AVL tree, or NULL on failure
  */
 
-void add_to_tree(int *arr, avl_t *parent_to_child, size_t mn, size_t mx, char flag)
+void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 {
-	size_t md = (mn + mx) / 2;
+	int md = (mn + mx) / 2;
 	avl_t *child;
 
 	if (mn > mx)
@@ -50,8 +50,8 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	if (tree == NULL)
 		return (NULL);
 	tree->parent = tree->left = tree->right = NULL;
-	md = size / 2, tree->n = array[md];
-	add_to_tree(array, tree, md + 1, size - 1, 'R');
-	add_to_tree(array, tree, 0, md - 1, 'L');
+	md = (size - 1) / 2, tree->n = array[md];
+	add_to_tree(array, tree, (int) md + 1, (int) size - 1, 'R');
+	add_to_tree(array, tree, 0, (int) md - 1, 'L');
 	return (tree);
 }
