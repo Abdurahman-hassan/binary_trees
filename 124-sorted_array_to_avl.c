@@ -12,16 +12,15 @@
 
 void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 {
+	avl_t *child = NULL;
 	int md = (mn + mx) / 2;
-	avl_t *child;
 
 	if (mn > mx)
 		return;
 	child = malloc(sizeof(avl_t));
 	if (child == NULL)
 		return;
-	child->n = arr[md], child->parent = parent_to_child;
-	child->left = child->right = NULL;
+	child = binary_tree_node(parent_to_child, arr[md]);
 	if (flag == 'L')
 		parent_to_child->left = child;
 	else
@@ -46,11 +45,8 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 
 	if (array == NULL || size == 0)
 		return (NULL);
-	tree = malloc(sizeof(avl_t));
-	if (tree == NULL)
-		return (NULL);
-	tree->parent = tree->left = tree->right = NULL;
-	md = (size - 1) / 2, tree->n = array[md];
+	md = (size - 1) / 2;
+	tree = binary_tree_node(NULL, array[md]);
 	add_to_tree(array, tree, (int) md + 1, (int) size - 1, 'R');
 	add_to_tree(array, tree, 0, (int) md - 1, 'L');
 	return (tree);
