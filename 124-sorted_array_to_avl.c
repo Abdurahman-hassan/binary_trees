@@ -17,9 +17,6 @@ void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 
 	if (mn > mx)
 		return;
-	child = malloc(sizeof(avl_t));
-	if (child == NULL)
-		return;
 	child = binary_tree_node(parent_to_child, arr[md]);
 	if (flag == 'L')
 		parent_to_child->left = child;
