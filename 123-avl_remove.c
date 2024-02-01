@@ -1,6 +1,43 @@
 #include "binary_trees.h"
 
 /**
+ * update_balance - Updates the balance of the AVL tree and performs rotations
+ * @tree: Double pointer to the root node of the AVL tree
+ * @node: Pointer to the current node
+ * Return: Pointer to the balanced node
+ */
+avl_t *update_a_balance(avl_t **tree, avl_t *node)
+{
+	int balance;
+	int balance_child;
+
+	balance = binary_tree_balance(node);
+
+	if (balance > 1)
+	{
+		balance_child = binary_tree_balance(node->left);
+		if (balance_child < 0)
+			node->left = binary_tree_rotate_left(node->left);
+
+		node = binary_tree_rotate_right(node);
+	} else if (balance < -1)
+	{
+		balance_child = binary_tree_balance(node->right);
+		if (balance_child > 0)
+			node->right = binary_tree_rotate_right(node->right);
+
+		node = binary_tree_rotate_left(node);
+	}
+
+	/* Update the tree root if the current node */
+	/* has become the root of the entire tree */
+	if (node->parent == NULL && *tree != node)
+		*tree = node;
+
+	return (node);
+}
+
+/**
  * avl_remove - Removes a node from an AVL tree
  * @root: Pointer to the root node of the tree for removing a node
  * @value: Value to remove in the tree
@@ -46,6 +83,6 @@ avl_t *avl_remove(avl_t *root, int value)
 	if (root == NULL)
 		return (root);
 	/* Update the balance factor of the node and balance the tree */
-	root = update_balance(&root, root);
+	root = update_a_balance(&root, root);
 	return (root);
 }
