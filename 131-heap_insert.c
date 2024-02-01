@@ -16,13 +16,14 @@ void swap_nodes(heap_t *a, heap_t *b)
  * heapify_up - Fixes the heap after insertion
  * @node: The inserted node
  */
-void heapify_up(heap_t *node)
+heap_t *heapify_up(heap_t *node)
 {
     while (node->parent && node->n > node->parent->n)
     {
         swap_nodes(node, node->parent);
         node = node->parent;
     }
+    return (node);
 }
 
 /**
@@ -97,7 +98,7 @@ heap_t *heap_insert(heap_t **root, int value)
             parent->right = new_node;
     }
 
-    heapify_up(new_node);
+    new_node = heapify_up(new_node);
 
     return (new_node);
 }
