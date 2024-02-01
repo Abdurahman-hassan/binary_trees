@@ -4,3 +4,4 @@ Binary trees are a type of hierarchical data structure where each node has at mo
 1. Full Binary Tree: A full binary tree is a special type of binary tree in which every parent node/internal node has either two or no children.
 2. Perfect Binary Tree: A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 3. Balanced Binary Tree: A balanced binary tree is a binary tree structure in which the left and right subtrees of every node differ in height by no more than.
+4. Complete Binary Tree: A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible.
