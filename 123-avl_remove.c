@@ -2,10 +2,8 @@
 
 /**
  * avl_remove - Removes a node from an AVL tree
- *
  * @root: Pointer to the root node of the tree for removing a node
  * @value: Value to remove in the tree
- *
  * Return: Pointer to the new root node of the tree after removing the value
  */
 avl_t *avl_remove(avl_t *root, int value)
@@ -24,7 +22,7 @@ avl_t *avl_remove(avl_t *root, int value)
 		/* Node with only one child or no child */
 		if ((root->left == NULL) || (root->right == NULL))
 		{
-			avl_t *temp = root->left ? root->left : root->right;
+			temp = root->left ? root->left : root->right;
 			/* No child case */
 			if (temp == NULL)
 			{
