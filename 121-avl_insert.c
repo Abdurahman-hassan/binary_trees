@@ -58,8 +58,10 @@ avl_t *insert_avl_node(avl_t **tree, avl_t *node, int value)
 		}
 	}
 	else
+	{
 		/* Duplicate values are not allowed in AVL tree */
 		return (NULL);
+	}
 
 	/* Update balance and perform rotations */
 	return (update_balance(tree, node));
