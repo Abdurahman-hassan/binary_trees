@@ -11,6 +11,7 @@ bst_t *array_to_bst(int *array, size_t size)
 	bst_t *root = NULL;
 	size_t i = 0;
 
+	/* loop through array and insert each element into BST */
 	for (; i < size; ++i)
 		bst_insert(&root, array[i]);
 	return (root);
