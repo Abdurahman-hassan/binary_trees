@@ -9,9 +9,8 @@ Binary trees are a type of hierarchical data structure where each node has at mo
 
 ## Functions
 
-Here are the functions you need to write for this project:
-
 Here are some functions you need to write for this project:
+
 1. `binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);` - Creates a new binary tree node with the given value. Returns a pointer to the new node, or NULL on failure.
 
 2. `binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);` - Inserts a new node as the left child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
@@ -29,3 +28,10 @@ Here are some functions you need to write for this project:
 8. `void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));` - Traverses a binary tree in in-order (left, root, right) and calls the given function for each node. Does nothing if the tree or the function is NULL.
 
 9. `void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));` - Traverses a binary tree in post-order (left, right, root) and calls the given function for each node. Does nothing if the tree or the function is NULL.
+
+10. `size_t binary_tree_height(const binary_tree_t *tree);` - Measures the height of a binary tree. Returns 0 if the tree is NULL.
+
+11. `size_t binary_tree_depth(const binary_tree_t *tree);` - Measures the depth of a node in a binary tree. Returns 0 if the tree is NULL.
+
+12. `size_t binary_tree_size(const binary_tree_t *tree);` - Measures the size of a binary tree. Returns 0 if the tree is NULL.
+
