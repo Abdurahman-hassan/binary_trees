@@ -7,23 +7,25 @@
  */
 void swap_nodes(heap_t *a, heap_t *b)
 {
-    int temp = a->n;
-    a->n = b->n;
-    b->n = temp;
+	int temp = a->n;
+
+	a->n = b->n;
+	b->n = temp;
 }
 
 /**
  * heapify_up - Fixes the heap after insertion
  * @node: The inserted node
+ * Return: The new parent node
  */
 heap_t *heapify_up(heap_t *node)
 {
-    while (node->parent && node->n > node->parent->n)
-    {
-        swap_nodes(node, node->parent);
-        node = node->parent;
-    }
-    return (node);
+	while (node->parent && node->n > node->parent->n)
+	{
+		swap_nodes(node, node->parent);
+		node = node->parent;
+	}
+	return (node);
 }
 
 /**
@@ -33,36 +35,36 @@ heap_t *heapify_up(heap_t *node)
  */
 heap_t *find_insert_point(heap_t *root)
 {
-    heap_t **queue = calloc(1024, sizeof(heap_t *));
-    int front = 0, back = 0;
+	heap_t **queue = calloc(1024, sizeof(heap_t *));
+	int front = 0, back = 0;
 
-    if (!queue)
-        return (NULL);
+	if (!queue)
+		return (NULL);
 
-    queue[back++] = root;
+	queue[back++] = root;
 
-    while (front < back)
-    {
-        heap_t *current = queue[front++];
+	while (front < back)
+	{
+		heap_t *current = queue[front++];
 
-        if (!current->left)
-        {
-            free(queue);
-            return current;
-        }
+		if (!current->left)
+		{
+			free(queue);
+			return (current);
+		}
 
-        if (!current->right)
-        {
-            free(queue);
-            return current;
-        }
+		if (!current->right)
+		{
+			free(queue);
+			return (current);
+		}
 
-        queue[back++] = current->left;
-        queue[back++] = current->right;
-    }
+		queue[back++] = current->left;
+		queue[back++] = current->right;
+	}
 
-    free(queue);
-    return (NULL);
+	free(queue);
+	return (NULL);
 }
 
 /**
@@ -73,32 +75,35 @@ heap_t *find_insert_point(heap_t *root)
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-    heap_t *parent, *new_node;
+	heap_t *parent, *new_node;
 
-    if (!root)
-        return (NULL);
+	if (!root)
+		return (NULL);
 
-    new_node = binary_tree_node(NULL, value);
-    if (!new_node)
-        return (NULL);
+	new_node = binary_tree_node(NULL, value);
+	if (!new_node)
+		return (NULL);
 
-    if (!(*root))
-    {
-        *root = new_node;
-        return (new_node);
-    }
+	if (!(*root))
+	{
+		*root = new_node;
+		return (new_node);
+	}
 
-    parent = find_insert_point(*root);
-    if (parent)
-    {
-        new_node->parent = parent;
-        if (!parent->left)
-            parent->left = new_node;
-        else
-            parent->right = new_node;
-    }
+	parent = find_insert_point(*root);
+	if (parent)
+	{
+		new_node->parent = parent;
+		if (!parent->left)
+			parent->left = new_node;
+		else
+			parent->right = new_node;
+	}
 
-    new_node = heapify_up(new_node);
+	new_node = heapify_up(new_node);
 
-    return (new_node);
+	if (!new_node->parent)
+		*root = new_node;
+
+	return (new_node);
 }
