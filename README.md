@@ -1,6 +1,8 @@
 # binary_trees
 This repository, binary_trees, is a collaborative educational project created by students of Holberton School and ALX AFRICA. It serves as a comprehensive resource for learning and implementing binary trees, a fundamental concept in computer science.
+
 Binary trees are a type of hierarchical data structure where each node has at most two children. There are several types of binary trees, each with its unique characteristics:
+
 1. Full Binary Tree: A full binary tree is a special type of binary tree in which every parent node/internal node has either two or no children.
 2. Perfect Binary Tree: A perfect binary tree is a type of binary tree in which every internal node has exactly two child nodes and all the leaf nodes are at the same level.
 3. Balanced Binary Tree: A balanced binary tree is a binary tree structure in which the left and right subtrees of every node differ in height by no more than.
@@ -44,3 +46,10 @@ Here are some functions you need to write for this project:
 16. `int binary_tree_is_full(const binary_tree_t *tree);` - Checks if a binary tree is full. Returns 0 if the tree is NULL.
 
 17. `int binary_tree_is_perfect(const binary_tree_t *tree);` - Checks if a binary tree is perfect. Returns 0 if the tree is NULL.
+
+18. `binary_tree_t *binary_tree_sibling(binary_tree_t *node);` - Finds the sibling of a node. Returns a pointer to the sibling node, or NULL if the node is NULL or the parent is NULL, or if the node has no sibling.
+
+19. `binary_tree_t *binary_tree_uncle(binary_tree_t *node);` - Finds the uncle of a node. Returns a pointer to the uncle node, or NULL if the node is NULL or the node has no uncle.
+
+Each function should be written in accordance with the specifications provided in the question. Remember to handle edge cases appropriately, such as when the input tree is NULL or when a node has no sibling or uncle.
+
