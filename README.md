@@ -35,3 +35,9 @@ Here are some functions you need to write for this project:
 
 12. `size_t binary_tree_size(const binary_tree_t *tree);` - Measures the size of a binary tree. Returns 0 if the tree is NULL.
 
+
+
+12. `size_t binary_tree_depth(const binary_tree_t *tree);` - Measures the depth of a node in a binary tree. Returns 0 if the tree is NULL.
+
+13. `size_t binary_tree_size(const binary_tree_t *tree);` - Measures the size of a binary tree. Returns 0 if the tree is NULL.
+
