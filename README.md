@@ -18,3 +18,9 @@ Here are some functions you need to write for this project:
 
 3. `binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);` - Inserts a new node as the right child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
 
+4. `void binary_tree_delete(binary_tree_t *tree);` - Deletes an entire binary tree. Does nothing if the tree is NULL.
+
+5. `int binary_tree_is_leaf(const binary_tree_t *node);` - Checks if a node is a leaf. Returns 1 if the node is a leaf, 0 otherwise. If the node is NULL, returns 0.
+
+6. `int binary_tree_is_root(const binary_tree_t *node);` - Checks if a node is the root. Returns 1 if the node is the root, 0 otherwise. If the node is NULL, returns 0.
+
