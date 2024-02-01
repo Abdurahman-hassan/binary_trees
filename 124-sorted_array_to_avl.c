@@ -9,7 +9,6 @@
  * @flag: L if the child is left otherwise R
  * Return: Pointer to the root node of the created AVL tree, or NULL on failure
  */
-
 void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 {
 	avl_t *child = NULL;
@@ -25,7 +24,6 @@ void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 	add_to_tree(arr, child, md + 1, mx, 'R');
 	add_to_tree(arr, child, mn, md - 1, 'L');
 }
-
 /**
  * array_to_avl - Builds an AVL tree from an array
  *
@@ -34,7 +32,6 @@ void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
  *
  * Return: Pointer to the root node of the created AVL tree, or NULL on failure
  */
-
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *tree = NULL;
