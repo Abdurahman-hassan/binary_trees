@@ -1,5 +1,7 @@
 #include "binary_trees.h"
 
+avl_t *update_balance(avl_t **tree, avl_t *node);
+
 /**
  * avl_remove - Removes a node from an AVL tree
  *
@@ -10,37 +12,44 @@
  */
 avl_t *avl_remove(avl_t *root, int value)
 {
-	avl_t *node = NULL;
+	avl_t *temp = NULL;
 
-	if (!root)
-		return (NULL);
-
-	if (root->n == value)
+	if (root == NULL)
+		return (root);
+	/* Perform standard BST delete */
+	if (value < root->n)
+		root->left = avl_remove(root->left, value);
+	else if (value > root->n)
+		root->right = avl_remove(root->right, value);
+	else
 	{
-		if (!root->left && !root->right)
+		/* Node with only one child or no child */
+		if ((root->left == NULL) || (root->right == NULL))
 		{
-			free(root);
-			return (NULL);
-		}
-		else if (!root->left || !root->right)
+			avl_t *temp = root->left ? root->left : root->right;
+			/* No child case */
+			if (temp == NULL)
+			{
+				temp = root;
+				root = NULL;
+			}
+			else
+				/* One child case */
+				*root = *temp; /* Copy the contents of the non-empty child */
+			free(temp);
+		} else
 		{
-			node = root->left ? root->left : root->right;
-			free(root);
-			return (node);
-		}
-		else
-		{
-			node = root->right;
-			while (node->left)
-				node = node->left;
-			root->n = node->n;
-			root->right = avl_remove(root->right, node->n);
+			temp = root->right; /* node with two children: Get inorder successor */
+			while (temp->left != NULL)
+				temp = temp->left;
+			root->n = temp->n; /* Copy inorder successor's data to this node */
+			root->right = avl_remove(root->right, temp->n); /* Delete inorder succesor*/
 		}
 	}
-	else if (root->n > value)
-		root->left = avl_remove(root->left, value);
-	else
-		root->right = avl_remove(root->right, value);
-
+	/* If the tree had only one node, then return */
+	if (root == NULL)
+		return (root);
+	/* Update the balance factor of the node and balance the tree */
+	root = update_balance(&root, root);
 	return (root);
 }
