@@ -2,17 +2,17 @@
 
 /**
  * zero_child - Removes a node that has zero child
- *
  * @node: Pointer to the node to be removed
  * @value: The value to remove in the tree
- *
  * Return: Nothing
 */
-
 void zero_child(bst_t *node, int value)
 {
+	/* if the node is the root */
 	if (node->parent != NULL)
 	{
+		/* if the node is the left child of its parent */
+		/* set the left child of the parent to NULL */
 		if (node->parent->left->n == value)
 			node->parent->left = NULL;
 		else
@@ -24,10 +24,8 @@ void zero_child(bst_t *node, int value)
 
 /**
  * one_child - Removes a node that has one child
- *
  * @node: Pointer to the node to be removed
  * @value: The value to remove in the tree
- *
  * Return: Nothing
 */
 
@@ -77,10 +75,12 @@ bst_t *find_successor(bst_t *node)
 
 void two_child(bst_t *node, int value)
 {
+	/* find the first in-order successor */
 	bst_t *successor = find_successor(node);
-
+	/* swap the value of the node to be removed with the successor */
 	node->n = successor->n;
 	successor->n = value;
+	/* remove the successor */
 	if (successor->left || successor->right)
 		one_child(successor, value);
 	else
