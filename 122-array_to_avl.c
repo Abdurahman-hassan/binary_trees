@@ -9,7 +9,11 @@
 avl_t *array_to_avl(int *array, size_t size)
 {
 	avl_t *root = NULL;
-	size_t i = 0, j = 0, last = 0;
+
+	size_t i = 0;
+	size_t j = 0;
+	size_t last = 0;
+
 	int arr[size];
 
 	if (array == NULL || size == 0)
