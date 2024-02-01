@@ -32,7 +32,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	if (arr == NULL || heap == NULL || size == NULL)
 		return (NULL);
 	*size = binary_tree_size(heap);
-	for (i = 0; i < size; ++i)
+	for (i = 0; i < *size; ++i)
 		arr[i] = heap_extract(&heap);
 	return (arr);
 }
