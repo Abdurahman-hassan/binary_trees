@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * update_balance - Updates the balance of the AVL tree and performs rotations
+ * update_a_balance - Updates the balance of the AVL tree and performs rotations
  * @tree: Double pointer to the root node of the AVL tree
  * @node: Pointer to the current node
  * Return: Pointer to the balanced node
