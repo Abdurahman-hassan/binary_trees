@@ -3,9 +3,8 @@
 /**
  * array_to_heap - Builds a Max Binary Heap tree from an array
  *
- * @tree: Pointer to the first element of the array to be converted
+ * @array: Pointer to the first element of the array to be converted
  * @size: Number of element in the array
- *
  * Return: Pointer to the root node of the created Binary Heap, or NULL on fail
  */
 
