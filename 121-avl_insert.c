@@ -9,13 +9,23 @@ avl_t *update_balance(avl_t **tree, avl_t *node);
  * @value: The value to insert
  * Return: Pointer to the created node, or NULL on failure
  */
-avl_t *avl_insert(avl_t **tree, int value)
-{
-	if (tree == NULL)
+avl_t *avl_insert(avl_t **tree, int value) {
+	if (!tree) {
 		return (NULL);
+	}
 
-	return (insert_avl_node(tree, *tree, value));
+	/* Insert the value and get back the inserted node */
+	avl_t *inserted_node = insert_avl_node(tree, *tree, value);
+
+	/* If the tree root was NULL, the inserted node is the new root */
+	if (!*tree) {
+		*tree = inserted_node;
+	}
+
+	/* Return the inserted node */
+	return (inserted_node);
 }
+
 
 /**
  * insert_avl_node - Helper function to insert a node in AVL Tree
@@ -24,47 +34,33 @@ avl_t *avl_insert(avl_t **tree, int value)
  * @value: The value to insert
  * Return: Pointer to the inserted node
  */
-avl_t *insert_avl_node(avl_t **tree, avl_t *node, int value)
-{
-	if (node == NULL)
-	{
-		/* Create a new node */
+avl_t *insert_avl_node(avl_t **tree, avl_t *node, int value) {
+	if (node == NULL) {
 		node = binary_tree_node(NULL, value);
 		if (*tree == NULL)
 			*tree = node;
-		return (node);
+		return node;
 	}
 
-	/* Insert the node as in a binary search tree */
-	if (value < node->n)
-	{
-		/* Insert in the left subtree */
-		avl_t *left_child = insert_avl_node(tree, node->left, value);
-
-		if (node->left == NULL)
-		{
-			node->left = left_child;
-			left_child->parent = node;
+	avl_t *new_node = NULL;
+	if (value < node->n) {
+		new_node = insert_avl_node(tree, node->left, value);
+		if (node->left == NULL) {
+			node->left = new_node;
+			new_node->parent = node;
 		}
-	} else if (value > node->n)
-	{
-		/* Insert in the right subtree */
-		avl_t *right_child = insert_avl_node(tree, node->right, value);
-
-		if (node->right == NULL)
-		{
-			node->right = right_child;
-			right_child->parent = node;
+	} else if (value > node->n) {
+		new_node = insert_avl_node(tree, node->right, value);
+		if (node->right == NULL) {
+			node->right = new_node;
+			new_node->parent = node;
 		}
 	}
-	else
-	{
-		/* Duplicate values are not allowed in AVL tree */
-		return (NULL);
-	}
 
-	/* Update balance and perform rotations */
-	return (update_balance(tree, node));
+	/* Update the balance factors and perform necessary rotations */
+	update_balance(tree, node);
+
+	return new_node ? new_node : node;
 }
 
 /**
@@ -73,34 +69,30 @@ avl_t *insert_avl_node(avl_t **tree, avl_t *node, int value)
  * @node: Pointer to the current node
  * Return: Pointer to the balanced node
  */
-avl_t *update_balance(avl_t **tree, avl_t *node)
-{
-	int balance = binary_tree_balance(node);
+avl_t *update_balance(avl_t **tree, avl_t *node) {
+	int balance;
+	int balance_child;
 
-	/* Left heavy situation */
-	if (balance > 1)
-	{
-		if (binary_tree_balance(node->left) < 0)
-		{
+	balance = binary_tree_balance(node);
+
+	if (balance > 1) {
+		balance_child = binary_tree_balance(node->left);
+		if (balance_child < 0) {
 			node->left = binary_tree_rotate_left(node->left);
 		}
 		node = binary_tree_rotate_right(node);
-	}
-	/* Right heavy situation */
-	else if (balance < -1)
-	{
-		if (binary_tree_balance(node->right) > 0)
-		{
+	} else if (balance < -1) {
+		balance_child = binary_tree_balance(node->right);
+		if (balance_child > 0) {
 			node->right = binary_tree_rotate_right(node->right);
 		}
 		node = binary_tree_rotate_left(node);
 	}
 
-	/* Correctly setting the new root of the subtree if rotations were made */
-	if (!node->parent)
-	{
-		*tree = node; /* Update the root of the tree */
+	/* Update the tree root if the current node has become the root of the entire tree */
+	if (node->parent == NULL && *tree != node) {
+		*tree = node;
 	}
 
-	return (node);
+	return node;
 }
