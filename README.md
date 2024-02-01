@@ -6,6 +6,11 @@ Binary trees are a type of hierarchical data structure where each node has at mo
 3. Balanced Binary Tree: A balanced binary tree is a binary tree structure in which the left and right subtrees of every node differ in height by no more than.
 4. Complete Binary Tree: A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible.
 5. Degenerate Binary Tree: A binary tree is said to be a degenerate binary tree or pathological binary tree if every internal node has only a single child.
+
+## Functions
+
+Here are the functions you need to write for this project:
+
 Here are some functions you need to write for this project:
 1. binary_tree_t *binary_tree_node(binary_tree_t *parent, int value); - Creates a new binary tree node with the given value. Returns a pointer to the new node, or NULL on failure.
 2. binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value); - Inserts a new node as the left child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
