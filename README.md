@@ -12,6 +12,9 @@ Binary trees are a type of hierarchical data structure where each node has at mo
 Here are the functions you need to write for this project:
 
 Here are some functions you need to write for this project:
-1. binary_tree_t *binary_tree_node(binary_tree_t *parent, int value); - Creates a new binary tree node with the given value. Returns a pointer to the new node, or NULL on failure.
-2. binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value); - Inserts a new node as the left child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
-3. binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value); - Inserts a new node as the right child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
+1. `binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);` - Creates a new binary tree node with the given value. Returns a pointer to the new node, or NULL on failure.
+
+2. `binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);` - Inserts a new node as the left child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
+
+3. `binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);` - Inserts a new node as the right child of the given parent node. Returns a pointer to the new node, or NULL on failure or if the parent is NULL.
+
