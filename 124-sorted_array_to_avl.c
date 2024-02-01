@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * array_to_avl - Builds an AVL tree from an array
+ * add_to_tree - Builds an AVL tree from an array
  * @arr: Pointer to the first element of the array to be converted
  * @parent_to_child: Pointer to parent
  * @mn: Maximum number index can be
@@ -25,7 +25,7 @@ void add_to_tree(int *arr, avl_t *parent_to_child, int mn, int mx, char flag)
 	add_to_tree(arr, child, mn, md - 1, 'L');
 }
 /**
- * array_to_avl - Builds an AVL tree from an array
+ * sorted_array_to_avl - Builds an AVL tree from an array
  *
  * @array: Pointer to the first element of the array to be converted
  * @size: Number of element in the array
