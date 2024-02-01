@@ -24,3 +24,8 @@ Here are some functions you need to write for this project:
 
 6. `int binary_tree_is_root(const binary_tree_t *node);` - Checks if a node is the root. Returns 1 if the node is the root, 0 otherwise. If the node is NULL, returns 0.
 
+7. `void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));` - Traverses a binary tree in pre-order (root, left, right) and calls the given function for each node. Does nothing if the tree or the function is NULL.
+
+8. `void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));` - Traverses a binary tree in in-order (left, root, right) and calls the given function for each node. Does nothing if the tree or the function is NULL.
+
+9. `void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));` - Traverses a binary tree in post-order (left, right, root) and calls the given function for each node. Does nothing if the tree or the function is NULL.
