@@ -1,7 +1,5 @@
 #include "binary_trees.h"
 
-avl_t *update_balance(avl_t **tree, avl_t *node);
-
 /**
  * avl_remove - Removes a node from an AVL tree
  *
